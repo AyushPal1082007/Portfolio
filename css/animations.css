@@ -1,0 +1,280 @@
+/* ============================================================
+   KEYFRAMES
+============================================================ */
+
+@keyframes blobFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 30px) scale(0.95); }
+}
+
+@keyframes blobFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40% { transform: translate(-40px, 20px) scale(1.08); }
+  70% { transform: translate(20px, -30px) scale(0.93); }
+}
+
+@keyframes blobFloat3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, -40px) scale(1.1); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 8px var(--cyan), 0 0 16px rgba(6, 182, 212, 0.3); transform: scale(1); }
+  50% { box-shadow: 0 0 14px var(--cyan), 0 0 28px rgba(6, 182, 212, 0.5); transform: scale(1.2); }
+}
+
+@keyframes profileGlow {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.7; }
+}
+
+@keyframes ringRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes scrollWheel {
+  0% { transform: translateY(0); opacity: 1; }
+  80% { transform: translateY(8px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(6, 182, 212, 0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 0.5; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% center; }
+  to { background-position: 200% center; }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes revealLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes revealRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ============================================================
+   REVEAL CLASSES (set by IntersectionObserver in JS)
+============================================================ */
+
+.reveal-up,
+.reveal-left,
+.reveal-right {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-up { transform: translateY(40px); }
+.reveal-left { transform: translateX(-40px); }
+.reveal-right { transform: translateX(40px); }
+
+.reveal-up.visible,
+.reveal-left.visible,
+.reveal-right.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Delays */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* ============================================================
+   ANIMATED GRADIENT TEXT
+============================================================ */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--cyan) 0%,
+    var(--purple) 30%,
+    var(--indigo) 60%,
+    var(--cyan) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ============================================================
+   GLOWING BORDER ANIMATION
+============================================================ */
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--cyan), var(--purple), var(--indigo));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+  filter: blur(2px);
+}
+
+.glow-border:hover::before {
+  opacity: 0.6;
+}
+
+/* ============================================================
+   TILT CARD EFFECT (enhanced via JS)
+============================================================ */
+.tilt-card {
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  transition: transform 0.15s ease;
+}
+
+/* ============================================================
+   SKILL BAR ANIMATION TRIGGER
+============================================================ */
+.skill-bar.animate {
+  animation: none; /* width set via JS */
+}
+
+/* ============================================================
+   FLOATING DOCK ANIMATION
+============================================================ */
+@keyframes dockEntry {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   PAGE SECTION BACKGROUND ALTERNATION
+============================================================ */
+.section:nth-child(odd) {
+  background: var(--bg-primary);
+}
+
+.section:nth-child(even) {
+  background: var(--bg-secondary);
+}
+
+/* ============================================================
+   HOVER GLOW ON CARDS
+============================================================ */
+.stat-card,
+.edu-card,
+.achievement-card,
+.project-card,
+.timeline-card {
+  transition: border-color 0.3s, transform 0.3s cubic-bezier(0.34, 1.1, 0.64, 1),
+              box-shadow 0.3s;
+}
+
+/* ============================================================
+   TYPING CURSOR BLINK
+============================================================ */
+.typing-cursor {
+  display: inline-block;
+  animation: blink 1s step-end infinite;
+}
+
+/* ============================================================
+   SCROLL PROGRESS GLOW
+============================================================ */
+.scroll-progress {
+  box-shadow: 0 0 12px var(--cyan), 0 0 4px var(--purple);
+}
+
+/* ============================================================
+   LOADER PULSE
+============================================================ */
+@keyframes loaderPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.loader-text {
+  animation: loaderPulse 1.5s ease-in-out infinite;
+}
+
+/* ============================================================
+   NAV LINK SLIDE-IN ON MOBILE
+============================================================ */
+.nav-links.mobile-open {
+  animation: mobileNavIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes mobileNavIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   ACHIEVEMENT CARD SHIMMER
+============================================================ */
+.achievement-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.02),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.6s;
+  pointer-events: none;
+}
+
+.achievement-card:hover::after {
+  left: 150%;
+}
+
+/* ============================================================
+   COUNTER NUMBER ANIMATION CLASS
+============================================================ */
+.stat-num.counting {
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
