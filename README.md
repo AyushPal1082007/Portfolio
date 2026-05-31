@@ -89,7 +89,7 @@ This portfolio is deployed on **GitHub Pages**.
 6. Select **main** branch and **/ (root)** folder
 7. Click **Save**
 8. Your site will be live at:
-https://ayushpal1082007.github.io/portfolio
+🌐 **Live Site:** [ayushpal1082007.github.io/Portfolio](https://ayushpal1082007.github.io/Portfolio)
 
 
 ---
